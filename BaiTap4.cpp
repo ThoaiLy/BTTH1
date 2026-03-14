@@ -9,21 +9,6 @@ struct Date
     int year;
 };
 
-Date input() ///Hàm nhập ngày, tháng, năm từ bàn phím và trả về kiểu Date
-{
-    cout << "Nhập ngày tháng năm: ";
-    Date tmp;
-    cin >> tmp.day >> tmp.month >> tmp.year;
-
-    return tmp;
-}
-
-void output(Date tmp) //In ra dưới dạng dd/mm/yyyy
-{
-    cout << "Ngày kế tiếp là: ";
-    cout << tmp.day << "/" << tmp.month << "/" << tmp.year;
-}
-
 //Hàm kiểm tra tính hợp lệ của ngày vừa nhập trả về kiểu bool
 bool check(Date cur)
 {
@@ -60,6 +45,45 @@ bool check(Date cur)
             return false;
     }
     return true;
+}
+
+Date input() ///Hàm nhập ngày, tháng, năm từ bàn phím và trả về kiểu Date
+{
+    cout << "Nhập ngày tháng năm: ";
+    Date tmp;
+    while(true)
+    {
+        /*Kiểm tra ngày được nhập là số hay các kí tự khác như a, b, !,....*/
+        if(!(cin >> tmp.day >> tmp.month >> tmp.year))
+        {
+            cout << "Ngày nhập không hợp lệ. Vui lòng nhập lại ngày: ";
+            cin.clear(); //Xóa trạng thái lỗi của cin
+            cin.ignore(100000, '\n'); //Bỏ dữ liệu sai trong bộ đệm
+            continue;
+        }
+
+        //Kiểm tra ngày được nhập có phải là số nguyên không
+        if(cin.peek() == '.')
+        {
+            cout << "Ngày nhập không hợp lệ. Vui lòng nhập lại ngày: ";
+            cin.clear(); //Xóa trạng thái lỗi của cin
+            cin.ignore(100000, '\n'); //Bỏ dữ liệu sai trong bộ đệm
+            continue;
+        }
+
+        if(check(tmp)) // Nếu kiểm tra ngày nhập hợp lệ thì dừng vòng lập
+            break;
+        else
+            cout << "Ngày nhập không hợp lệ. Vui lòng nhập lại ngày: ";
+    }
+
+    return tmp;
+}
+
+void output(Date tmp) //In ra dưới dạng dd/mm/yyyy
+{
+    cout << "Ngày kế tiếp là: ";
+    cout << tmp.day << "/" << tmp.month << "/" << tmp.year;
 }
 
 Date nextday(Date cur)
@@ -131,12 +155,6 @@ int main()
 {
     Date cur;
     cur=input();
-
-    while(!check(cur))
-    {
-        cout << "Ngày nhập vào không hợp lệ. Vui lòng nhập lại!\n";
-        cur=input();
-    }
 
     Date next = nextday(cur);
     output(next);
