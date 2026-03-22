@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string.h>
 #include<iomanip>
 #include <cctype>
 using namespace std;
@@ -14,11 +15,19 @@ struct student{
 //Hàm kiểm tra tên có chứa ký tự lạ hoặc số hay không
 bool checkName(char name[])
 {
+    if(strlen(name) == 0)
+        return false; //Tên rỗng trả về false (Trường hợp không nhập mà nhấn enter luôn)
+
+    bool allSpace = true; //Biến dùng để kiểm tra xem tên nhập có phải toàn kí tự cách không. Ví dụ name = "       "
     for(int i = 0; name[i] != '\0'; i++)
     {
         if(!isalpha(name[i]) && name[i] != ' ')
             return false;
+        if(name[i] != ' ')
+            allSpace = false;
     }
+    if(allSpace)
+        return false; //Tên nhập vào toàn dấu cách -> sai
     return true;
 }
 
@@ -42,9 +51,9 @@ student input()
     //Kiểm tra điểm nhập vào có hợp lệ không
     while(true)
     {
-        if(!(cin >> tmp.math >> tmp.literature))
+        if(!(cin >> tmp.math >> tmp.literature) ||  tmp.math < 0 || tmp.math > 10 || tmp.literature < 0 || tmp.literature > 10 || cin.peek() != '\n')
         {
-            cout << "Diem khong hop le. Nhap lai: ";
+            cout << "Điểm không hợp lệ. Nhập lại: ";
             cin.clear(); //Xóa trạng thái lỗi của cin
             cin.ignore(1000,'\n'); //Bỏ dữ liệu sai trong bộ đệm
             continue;
