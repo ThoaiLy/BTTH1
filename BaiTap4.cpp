@@ -63,7 +63,7 @@ Date input() ///Hàm nhập ngày, tháng, năm từ bàn phím và trả về k
         }
 
         //Kiểm tra ngày được nhập có phải là số nguyên không
-        if(cin.peek() == '.')
+        if(cin.peek() == '.' || cin.peek() != '\n')
         {
             cout << "Ngày nhập không hợp lệ. Vui lòng nhập lại ngày: ";
             cin.clear(); //Xóa trạng thái lỗi của cin

@@ -25,7 +25,7 @@ fraction input()
         }
 
         //Kiểm tra số được nhập có phải là số nguyên không
-        if(cin.peek() == '.')
+        if(cin.peek() == '.' || cin.peek() != '\n')
         {
             cout << "Phân số không hợp lệ. Vui lòng nhập lại phân số: ";
             cin.clear(); //Xóa trạng thái lỗi của cin
