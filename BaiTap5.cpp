@@ -12,7 +12,11 @@ struct student{
     double avg; //average: điểm trung bình
 };
 
-//Hàm kiểm tra tên có chứa ký tự lạ hoặc số hay không
+/*
+Đầu vào: Chuỗi name (mảng ký tự)
+Đầu ra: true nếu tên hợp lệ, false nếu không hợp lệ
+Chức năng: Kiểm tra sự hợp lệ của tên được nhập
+*/
 bool checkName(char name[])
 {
     if(strlen(name) == 0)
@@ -31,7 +35,11 @@ bool checkName(char name[])
     return true;
 }
 
-//Hàm nhập dữ liệu từ bàn phím, trả về kiểu student
+/*
+Đầu vào: Dữ liệu nhập từ bàn phím
+Đầu ra: Trả về một biến lưu thông tin học sinh kiểu student
+Chức năng: Nhập thông tin học sinh và kiểm tra tính hợp lệ của dữ liệu
+*/
 student input()
 {
     student tmp;
@@ -68,7 +76,11 @@ student input()
     return tmp;
 }
 
-//Hàm xuất thông tin học sinh
+/*
+Đầu vào: Biến tmp (đang lưu thông tin học sinh) kiểu student
+Đầu ra: Không có giá trị trả về
+Chức năng: In thông tin học sinh ra màn hình
+*/
 void print(student tmp)
 {
     cout << "Tên: " << tmp.name << "\n";

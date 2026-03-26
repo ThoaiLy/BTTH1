@@ -9,6 +9,11 @@ struct fraction
     long long denominator;
 };
 
+/*
+Đầu vào: Dữ liệu nhập từ bàn phím 
+Đầu ra: Trả về giá trị kiểu fraction
+Chức năng: Nhập và kiểm tra phân số được nhập
+*/
 fraction input()
 {
     fraction tmp;
@@ -24,7 +29,7 @@ fraction input()
             continue;
         }
 
-        //Kiểm tra số được nhập có phải là số nguyên không
+        //Kiểm tra số được nhập có phải là số nguyên không hay chứa các kí tự dư khác
         if(cin.peek() == '.' || cin.peek() != '\n')
         {
             cout << "Phân số không hợp lệ. Vui lòng nhập lại phân số: ";
@@ -46,6 +51,11 @@ fraction input()
     return tmp;
 }
 
+/*
+Đầu vào: Phân số a
+Đầu ra: Không có giá trị trả về
+Chức năng: In ra phân số
+*/
 void output(fraction a)
 {
     if(a.numerator == 0) //Tử bằng 0 chỉ in 0
@@ -56,6 +66,11 @@ void output(fraction a)
         cout << a.numerator << "/" << a.denominator << "\n";
 }
 
+/*
+Đầu vào: Phân số a
+Đầu ra: Không có giá trị trả về
+Chức năng: Rút gọn và chuẩn hóa dấu phân số
+*/
 void simplify(fraction &a)
 {
     //Chuẩn hóa lại dấu của phân số
@@ -70,6 +85,11 @@ void simplify(fraction &a)
     a.denominator = a.denominator / g;
 }
 
+/*
+Đầu vào: Phân số a và b
+Đầu ra: Trả về giá trị phân số kiểu fraction là tổng của hai phân số a và b
+Chức năng: Cộng hai phân số
+*/
 fraction add(fraction a, fraction b)
 {
     fraction tmp;
@@ -82,6 +102,11 @@ fraction add(fraction a, fraction b)
     return tmp;
 }
 
+/*
+Đầu vào: Phân số a và b
+Đầu ra: Trả về giá trị phân số kiểu fraction là hiệu của hai phân số a và b
+Chức năng: Trừ hai phân số
+*/
 fraction sub(fraction a, fraction b)
 {
     fraction tmp;
@@ -94,6 +119,11 @@ fraction sub(fraction a, fraction b)
     return tmp;
 }
 
+/*
+Đầu vào: Phân số a và b
+Đầu ra: Trả về giá trị phân số kiểu fraction là tích của hai phân số a và b
+Chức năng: Nhân hai phân số
+*/
 fraction multiply(fraction a, fraction b)
 {
     fraction tmp;
@@ -106,6 +136,11 @@ fraction multiply(fraction a, fraction b)
     return tmp;
 }
 
+/*
+Đầu vào: Phân số a và b
+Đầu ra: Trả về giá trị phân số kiểu fraction là thương của hai phân số a và b
+Chức năng: Chia hai phân số
+*/
 fraction divide(fraction a, fraction b)
 {
     fraction tmp;

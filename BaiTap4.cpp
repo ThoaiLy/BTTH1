@@ -9,7 +9,11 @@ struct Date
     int year;
 };
 
-//Hàm kiểm tra tính hợp lệ của ngày vừa nhập trả về kiểu bool
+/*
+Đầu vào: Ngày hiện tại (Date cur)
+Đầu ra: true nếu ngày hợp lệ, false nếu không hợp lệ
+Chức năng: Kiểm tra tính hợp lệ của ngày
+*/
 bool check(Date cur)
 {
     //Kiểm tra ngày, tháng, năm nhập hợp lệ hay không
@@ -47,7 +51,12 @@ bool check(Date cur)
     return true;
 }
 
-Date input() ///Hàm nhập ngày, tháng, năm từ bàn phím và trả về kiểu Date
+/*
+Đầu vào: Dữ liệu nhập từ bàn phím
+Đầu ra: Trả về một ngày hợp lệ kiểu Date
+Chức năng: Nhập và kiểm tra tính hợp lệ của ngày
+*/
+Date input()
 {
     cout << "Nhập ngày tháng năm: ";
     Date tmp;
@@ -62,7 +71,7 @@ Date input() ///Hàm nhập ngày, tháng, năm từ bàn phím và trả về k
             continue;
         }
 
-        //Kiểm tra ngày được nhập có phải là số nguyên không
+        //Kiểm tra số được nhập có phải là số nguyên không hay chứa các kí tự dư khác
         if(cin.peek() == '.' || cin.peek() != '\n')
         {
             cout << "Ngày nhập không hợp lệ. Vui lòng nhập lại ngày: ";
@@ -80,12 +89,22 @@ Date input() ///Hàm nhập ngày, tháng, năm từ bàn phím và trả về k
     return tmp;
 }
 
-void output(Date tmp) //In ra dưới dạng dd/mm/yyyy
+/*
+Đầu vào: Ngày tháng năm
+Đầu ra: Không có giá trị trả về
+Chức năng: In ngày ra màn hình theo định dạng dd/mm/yyyy
+*/
+void output(Date tmp) 
 {
     cout << "Ngày kế tiếp là: ";
     cout << tmp.day << "/" << tmp.month << "/" << tmp.year;
 }
 
+/*
+Đầu vào: Ngày cur (kiểu Date)
+Đầu ra: Trả về ngày kế tiếp kiểu Date
+Chức năng: Tính ngày kế tiếp của ngày hiện tại
+*/
 Date nextday(Date cur)
 {
     //Tạo bản sao của ngày hiện tại 
